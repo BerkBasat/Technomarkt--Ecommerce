@@ -1,0 +1,12 @@
+﻿@model List<SubCategory>
+
+
+<div class="dropdown">
+    <button class="dropbtn">Filter by Category</button>
+    <div class="dropdown-content">
+        @foreach (var subCategory in Model)
+        {
+            <a href="/Home/Index/@subCategory.ID">@subCategory.SubCategoryName</a>
+        }
+    </div>
+</div>

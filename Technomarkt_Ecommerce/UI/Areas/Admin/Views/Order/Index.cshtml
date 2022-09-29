@@ -1,0 +1,64 @@
+﻿@model List<Order>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="text-center mt-5">
+    <h2>ORDERS</h2>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-12">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Order No</th>
+                    <th>Order Date</th>
+                    <th>Delivery Date</th>
+                    <th>Order Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.OrderNo</td>
+                        <td>@order.OrderDate</td>
+                        @if (order.OrderStatus == DAL.Enums.OrderStatus.Delivered)
+                        {
+                            <td>@order.DeliveryDate</td>
+                        }
+                        else
+                        {
+                            <td>-</td>
+                        }
+                        <td>
+                            @switch (order.OrderStatus)
+                            {
+                                case DAL.Enums.OrderStatus.Processing:
+                                    <span class="badge bg-info">@order.OrderStatus.ToString()</span>
+                                    break;
+                                case DAL.Enums.OrderStatus.Shipping:
+                                    <span class="badge bg-warning">@order.OrderStatus.ToString()</span>
+                                    break;
+                                case DAL.Enums.OrderStatus.Delivered:
+                                    <span class="badge bg-success">@order.OrderStatus.ToString()</span>
+                                    break;
+                                case DAL.Enums.OrderStatus.Cancelled:
+                                    <span class="badge bg-danger">@order.OrderStatus.ToString()</span>
+                                    break;
+                                case DAL.Enums.OrderStatus.Refunded:
+                                    <span class="badge bg-danger">@order.OrderStatus.ToString()</span>
+                                    break;
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

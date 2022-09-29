@@ -1,0 +1,32 @@
+﻿@model SubCategory
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section id="form">
+    <div class="row mt-5">
+        <div class="col-lg-4 mx-auto mt-5">
+            <header class="text-center">
+                Add Sub Category
+            </header>
+            <form method="post">
+                <div class="form-group">
+                    <label>Sub Category Name</label>
+                    @Html.TextBoxFor(x => x.SubCategoryName, new { @class = "form-control mt-3" })
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control input-lg" name="CategoryId">
+                        @foreach (Category category in ViewBag.Categories)
+                        {
+                            <option value="@category.ID">@category.CategoryName</option>
+                        }
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-dark d-grid gap-2 col-4 mx-auto mt-4 mb-5">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,23 @@
+﻿@model Category
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section id="form">
+    <div class="row mt-5">
+        <div class="col-lg-4 mx-auto mt-5">
+            <header class="text-center">
+               Update Category
+            </header>
+            <form method="post">
+                <div class="form-group">
+                    <label>Category Name</label>
+                    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control mt-3" })
+                </div>
+                <button type="submit" class="btn btn-dark d-grid gap-2 col-4 mx-auto mt-4 mb-5">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+

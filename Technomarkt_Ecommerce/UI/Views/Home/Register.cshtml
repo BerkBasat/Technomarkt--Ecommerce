@@ -1,0 +1,58 @@
+﻿@model UI.Models.RegisterVM
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4 mx-auto mt-5">
+        @{if (TempData["error"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["error"]
+                </div>
+            }
+        }
+        <div class="card">
+            <div class="card-header">
+                <h2 style="text-align: center; font-weight: bold; font-family: Roboto,sans-serif;">REGISTER</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-1">
+                        <label>Username:</label>
+                        @Html.ValidationMessageFor(x => x.UserName)
+                        <br />
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-1">
+                        <label>Email:</label>
+                        @Html.ValidationMessageFor(x => x.Email)
+                        <br />
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-1">
+                        <label>Phone Number:</label>
+                        @Html.ValidationMessageFor(x => x.PhoneNumber)
+                        <br />
+                        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-1">
+                        <label>Password:</label>
+                        @Html.ValidationMessageFor(x => x.Password)
+                        <br />
+                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-1">
+                        <label>Confirm Password:</label>
+                        @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                        <br />
+                        @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-dark d-grid gap-2 col-4 mx-auto mt-2">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

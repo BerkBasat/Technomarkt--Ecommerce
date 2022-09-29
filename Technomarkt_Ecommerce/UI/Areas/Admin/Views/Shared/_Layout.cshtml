@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technomarkt</title>
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <section id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/Home/Index">Technomarkt</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link active" aria-current="page" href="~/Admin/Home/Index">Products</a>
+                        <a class="nav-link active" aria-current="page" href="~/Admin/Brand/Index">Brands</a>
+                        <a class="nav-link active" aria-current="page" href="~/Admin/Category/Index">Categories</a>
+                        <a class="nav-link active" aria-current="page" href="~/Admin/SubCategory/Index">SubCategories</a>
+                        <a class="nav-link active" aria-current="page" href="~/Admin/Supplier/Index">Suppliers</a>
+                        <a class="nav-link active" aria-current="page" href="~/Admin/Order/Index">Orders</a>
+                        <a class="nav-link active" aria-current="page" href="~/Admin/SupplierOrder/Index">Supplier Orders</a>
+                        <form class="d-flex">
+                            <a class="btn btn-outline-warning" href="/Admin/Home/AdminCart">
+                                Cart
+                                <span class="badge bg-warning text-black ms-1 rounded-pill">
+                                    @{
+                                        if (Session["cart"] != null)
+                                        {
+                                            UI.Models.Cart cart = Session["cart"] as UI.Models.Cart;
+                                            <span>@cart.myCart.Count</span>
+                                        }
+                                        else
+                                        {
+                                            <span>0</span>
+                                        }
+
+                                    }
+                                </span>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+        <section id="footer">
+
+        <div class="footer-top-area">
+            <div class="zigzag-bottom"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-about-us">
+                            <h2>About Us</h2>
+                            <p>
+                                Technomarkt is a tech store founded in 2008 as a small business in Istanbul and quickly grew to span over 54 cities with 153 stores, thousands of employees and today became one of the biggest chain of stores in Turkey.
+                            </p>
+                            <div class="footer-social">
+                                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-menu">
+                            <h2 class="footer-wid-title">User Navigation </h2>
+                            <ul>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Register</a></li>
+                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">Cart</a></li>
+                                <li><a href="#">Home Page</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-menu">
+                            <h2 class="footer-wid-title">Sub Categories</h2>
+                            <ul>
+                                <li><a href="#">Desktops</a></li>
+                                <li><a href="#">Laptops</a></li>
+                                <li><a href="#">Phones</a></li>
+                                <li><a href="#">Smart Watches</a></li>
+                                <li><a href="#">Tablets</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-newsletter">
+                            <h2 class="footer-wid-title">Newsletter</h2>
+                            <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                            <div class="newsletter-form">
+                                <form action="#">
+                                    <input type="email" placeholder="Type your email">
+                                </form>
+                                <button type="button" class="btn btn-light">Subscribe</button>
+                                <h2 class="footer-brand">TECHNOMARKT</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="copyright">
+                            <p>&copy;@DateTime.Now.Year. All Rights Reserved. </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="footer-card-icon">
+                            <i class="fa fa-cc-discover"></i>
+                            <i class="fa fa-cc-mastercard"></i>
+                            <i class="fa fa-cc-paypal"></i>
+                            <i class="fa fa-cc-visa"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+</body>
+</html>

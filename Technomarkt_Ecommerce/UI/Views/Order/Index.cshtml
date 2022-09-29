@@ -1,0 +1,111 @@
+﻿@model List<Order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-bottom:15em;">
+    @{if (TempData["info"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["info"]
+            </div>
+        }
+        if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["error"]
+            </div>
+        }
+
+    }
+    <div class="text-center" style="margin-top:50px;">
+        <form method="get">
+            <label>Search: </label>
+            <input type="search" placeholder="Enter Order No or Date" value="@ViewData["SearchResults"]" name="search" />
+            <input type="submit" value="Search" class="btn btn-sm btn-primary mb-1" />
+            @Html.ActionLink("See All", "Index", null, new { @class = "btn btn-sm btn-primary mb-1" })
+
+        </form>
+    </div>
+
+    @foreach (var order in Model)
+    {
+        <div class="col-sm-12 col-md-12 col-lg-12 mx-auto mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                            Order No:
+                            <span>@order.OrderNo</span>
+                        </li>
+                        @switch (order.OrderStatus)
+                        {
+                            case DAL.Enums.OrderStatus.Processing:
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Order Status:
+                                    <span class="badge bg-info">@order.OrderStatus.ToString()</span>
+                                </li>
+                                break;
+                            case DAL.Enums.OrderStatus.Shipping:
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Order Status:
+                                    <span class="badge bg-warning">@order.OrderStatus.ToString()</span>
+                                </li>
+                                break;
+                            case DAL.Enums.OrderStatus.Delivered:
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Order Status:
+                                    <span class="badge bg-success">@order.OrderStatus.ToString()</span>
+                                </li>
+                                break;
+                            case DAL.Enums.OrderStatus.Cancelled:
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Order Status:
+                                    <span class="badge bg-danger">@order.OrderStatus.ToString()</span>
+                                </li>
+                                break;
+                            case DAL.Enums.OrderStatus.Refunded:
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Order Status:
+                                    <span class="badge bg-danger">@order.OrderStatus.ToString()</span>
+                                </li>
+                                break;
+
+                        }
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                            Order Date:
+                            <span>@order.OrderDate</span>
+                        </li>
+                        @if (order.OrderStatus != DAL.Enums.OrderStatus.Delivered)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                Delivery Date:
+                                <span>-</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                Delivery Date:
+                                <span>@order.DeliveryDate</span>
+                            </li>
+                        }
+                    </ul>
+                    <div class="d-flex">
+                        @Html.ActionLink("Details", "OrderDetails", new { id = order.ID }, new { @class = "btn btn-sm btn-primary mt-2 me-2" })
+                        @if (order.OrderStatus == DAL.Enums.OrderStatus.Processing)
+                        {
+                            @Html.ActionLink("Cancel", "Cancel", new { id = order.ID }, new { @class = "btn btn-sm btn-danger mt-2 me-2" })
+                        }
+                        @if (order.OrderStatus == DAL.Enums.OrderStatus.Delivered)
+                        {
+                            @Html.ActionLink("Refund", "Refund", new { id = order.ID }, new { @class = "btn btn-sm btn-danger mt-2 me-2" })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

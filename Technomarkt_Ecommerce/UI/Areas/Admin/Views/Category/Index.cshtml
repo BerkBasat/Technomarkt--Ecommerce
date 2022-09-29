@@ -1,0 +1,64 @@
+﻿@model List<Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center mt-5">
+    <h2>CATEGORIES</h2>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-12">
+        @{if (TempData["info"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["info"]
+                </div>
+            }
+            else if (TempData["error"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["error"]
+                </div>
+            }
+
+        }
+
+        @Html.ActionLink("Add Category", "Create", null, new { @class = "btn btn-dark" })
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Sub Category Count</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>@category.CategoryName</td>
+                        <td>@category.SubCategories.Count()</td>
+                        <td>
+                            @switch (category.Status)
+                            {
+                                case Core.Enums.Status.Active:
+                                    <span class="badge bg-success">@category.Status.ToString()</span>
+                                    break;
+                                case Core.Enums.Status.Inactive:
+                                    <span class="badge bg-danger">@category.Status.ToString()</span>
+                                    break;
+                            }
+                        </td>
+                        <td><a href="/Admin/Category/Update/@category.ID" class="btn btn-primary btn-sm">Update</a></td>
+                        <td><a href="/Admin/Category/Delete/@category.ID" class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+

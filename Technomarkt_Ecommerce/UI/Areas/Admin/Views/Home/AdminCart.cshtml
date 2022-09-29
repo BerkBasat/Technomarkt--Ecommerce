@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "AdminCart";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    UI.Models.Cart cart = Session["cart"] as UI.Models.Cart;
+    decimal? totalPrice = 0;
+    decimal? shipping = 12;
+}
+
+<section id="cart-page">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Sub Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in cart.myCart.ToList())
+                        {
+                            totalPrice += item.SubTotal;
+                            <tr>
+                                <td width="50px">
+                                    <img src="~/Content/img/@item.ProductImage" style="width:auto; height:70px" />
+                                </td>
+                                <td>@item.ProductName</td>
+                                <td>@item.Quantity</td>
+                                <td>$@item.Price</td>
+                                <td>$@item.SubTotal</td>
+                                <td>@Html.ActionLink("Delete", "DeleteCartItem", new { id = item.Id }, new { @class = "btn btn-danger" })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 style="text-align:center;">Cart</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            @if (totalPrice >= 300)
+                            {
+                                <li><strong>Shipping: </strong>$0</li>
+                            }
+                            else
+                            {
+                                totalPrice += shipping;
+                                <li><strong>Shipping: </strong>$@shipping</li>
+                            }
+                            <li><strong>Total Price: </strong>$@totalPrice</li>
+                            @Html.ActionLink("Continue", "BillingDetails", null, new { @class = "btn btn-dark btn-lg" })
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

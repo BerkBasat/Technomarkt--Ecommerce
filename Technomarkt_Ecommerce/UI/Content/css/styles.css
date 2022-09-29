@@ -1,0 +1,354 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+#navbar .navbar-brand {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #F1C40F
+}
+
+
+    #navbar .navbar-brand:hover {
+        color: #D4AC0D
+    }
+
+
+
+#navbar .navbar-nav a {
+    font-weight: bold;
+    color: #F1C40F
+}
+
+    #navbar .navbar-nav a:hover {
+        color: #D4AC0D
+    }
+
+
+/*Carousel*/
+
+#carousel {
+    width: 65em;
+    margin: auto;
+}
+
+#carousel img {
+    height: 35em;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#carousel .carousel-caption-1{
+    font-family: Roboto, sans-serif;
+    font-size: 3em;
+    font-weight:bold;  
+    margin-bottom:8em;
+}
+
+#carousel .carousel-caption-2{
+    font-family: Roboto, sans-serif;
+    font-size: 3em;
+    color: red;
+    font-weight:bold;
+    text-align:right;
+    margin-bottom:2em;
+}
+
+
+#carousel .carousel-caption-3 {
+    font-family: Roboto, sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom:5em;
+}
+
+
+div h2 {
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+/*Filter Table*/
+
+.dropbtn {
+    background-color: #1c1f24;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+/*Checkout Page*/
+
+.payment-method img{
+    width:5em;
+    height:auto;
+    padding-right:20px;
+    padding-bottom:30px;
+}
+
+
+/*Product Cards*/
+
+#products {
+    font-family: Roboto, sans-serif;
+}
+
+    #products h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #283747;
+        padding-top: 20px;
+    }
+
+    #products a {
+        text-decoration: none;
+    }
+
+    #products .product-card {
+        width: 320px;
+        position: relative;
+        box-shadow: 0 2px 7px #dfdfdf;
+        margin: 50px auto;
+        background: #fafafa;
+    }
+
+    #products .product-tumb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        padding: 30px;
+        background: white;
+    }
+
+        #products .product-tumb img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+    #products .product-details {
+        padding: 30px;
+    }
+
+    #products .product-catagory {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #ccc;
+        margin-bottom: 18px;
+    }
+
+    #products .product-details h4 a {
+        font-weight: 500;
+        display: block;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+        color: #363636;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+        #products .product-details h4 a:hover {
+            color: #fbb72c;
+        }
+
+    #products .product-details p {
+        font-size: 15px;
+        line-height: 22px;
+        margin-bottom: 18px;
+        color: #999;
+    }
+
+    #products .product-bottom-details {
+        overflow: hidden;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+
+        #products .product-bottom-details div {
+            float: left;
+            width: 50%;
+        }
+
+    #products .product-price {
+        font-size: 18px;
+        color: #fbb72c;
+        font-weight: 600;
+    }
+
+/* Product Page */
+
+#product-page{
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+
+
+/* Order Detail Page */
+
+#order-details {
+    margin: 50px;
+    font-family: Roboto,sans-serif;
+    font-weight:bold;
+}
+
+    #order-details h5{
+        font-size: 50px;
+    }
+
+
+/* Footer Section */
+
+#footer {
+    color: white;
+    background-color: #1c1f24;
+    padding-top: 30px;
+}
+
+    #footer .footer-social a {
+        color: #F1C40F;
+        font-size: 1.5rem;
+    }
+        #footer .footer-social a:hover {
+            color: #D4AC0D;
+            font-size: 1.5rem;
+        }
+
+    #footer li a {
+        text-decoration: none;
+        color: white;
+    }
+        #footer li a:hover {
+            text-decoration: none;
+            color: #F1C40F;
+        }
+
+    #footer button {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    #footer h2 {
+        font-family: Roboto,sans-serif;
+        font-weight: bold;
+        color: #F1C40F;
+    }
+
+    #footer .footer-brand {
+        font-family: Roboto,sans-serif;
+        font-weight: bold;
+        color: #F1C40F;
+        font-size: 2.5em;
+        margin-top: 15px;
+    } 
+
+    #footer .footer-card-icon {
+        font-size: 2.5rem;
+    }
+
+
+/*Forms*/
+
+
+#form header {
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+/*Error Message Style*/
+.field-validation-error{
+    color:red;
+    font-weight:bold;
+}
+
+
+/* Media Queries */
+
+
+/* Carousel */
+
+@media (max-width: 800px) {
+    #carousel img {
+        height: 25em;
+    }
+}
+
+@media (max-width: 485px) {
+    #carousel img {
+        height: 20em;
+    }
+}
+
+@media (max-width: 1060px) {
+    #carousel {
+        width: 50em;
+    }
+}
+
+@media (max-width: 800px) {
+    #carousel {
+        width: 40em;
+    }
+}
+
+@media (max-width: 645px) {
+    #carousel {
+        width: 30em;
+    }
+}
+
+@media (max-width: 485px) {
+    #carousel {
+        width: 25em;
+    }
+}
+
+@media (max-width: 400px) {
+    #carousel {
+        width: 22em;
+    }
+}
