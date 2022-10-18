@@ -25,7 +25,5 @@ namespace UI.Models
                 return Price * Quantity;
             }
         }
-
-        public decimal? Total { get; set; }
     }
 }
