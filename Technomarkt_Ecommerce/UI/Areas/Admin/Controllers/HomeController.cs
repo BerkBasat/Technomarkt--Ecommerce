@@ -163,7 +163,7 @@ namespace UI.Areas.Admin.Controllers
         }
 
 
-        #region This area is for ordering products from supplier to restock!
+        #region Order products from suppliers to restock
         public ActionResult AddToCart(Guid id)
         {
             try

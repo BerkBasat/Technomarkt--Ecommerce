@@ -8,6 +8,7 @@ using Service.Concrete;
 using UI.CustomFilters;
 using UI.Models;
 using Common;
+using System.Web.Razor.Generator;
 
 namespace UI.Controllers
 {
@@ -47,6 +48,7 @@ namespace UI.Controllers
             return View(userCards);
         }
 
+        #region Add, delete, update user credit card
         [AuthFilter]
         public ActionResult SaveCard()
         {
@@ -122,28 +124,40 @@ namespace UI.Controllers
                 return RedirectToAction("Checkout");
             }
         }
+        #endregion
 
+        static List<OrderDetail> orderDetailList = new List<OrderDetail>();
 
+        // Complete order
         [AuthFilter]
         public ActionResult OrderComplete()
         {
+
+            CompleteOrder();
+
+            return View(orderDetailList);
+        }
+
+        private void CompleteOrder ()
+        {
+            //Create sessions for cart and user
+
             Cart cart = Session["cart"] as Cart;
             AppUser user = Session["login"] as AppUser;
 
-            List<OrderDetail> orderDetailList = new List<OrderDetail>();
-
-
+            // Check if the cart has items in it
             if (cart != null)
             {
 
                 Random rnd = new Random();
-                string productList = "";
+                string productList = ""; // Empty product list will be filled with card items and used while sending email and sms to user
 
                 Order order = new Order();
                 order.AppUserID = user.ID;
-                order.OrderNo = rnd.Next(1000, 100000);
+                order.OrderNo = rnd.Next(1000, 100000); //generate random order number
                 Order result = orderService.Add(order);
 
+                //Add up all the items in the cart to total
                 foreach (var item in cart.myCart)
                 {
 
@@ -156,28 +170,29 @@ namespace UI.Controllers
                     orderDetail.Quantity = item.Quantity;
                     orderDetail.SubTotal = (decimal)item.SubTotal;
 
-
+                    //Add cart items to order detail table
                     orderDetailList.Add(orderDetail);
                     orderDetailService.Add(orderDetail);
 
+                    // Decrease stock amount of all products in the cart
                     Product product = productService.GetById(item.Id);
                     product.UnitsInStock -= Convert.ToInt16(item.Quantity);
 
                     productList = $"{item.ProductName} - Total: {item.SubTotal}";
                 }
 
-
+                // Sending email and sms to user with order details
                 string content = $"We have received your order. Order No: {order.OrderNo}\nYour order:\n{productList}";
                 MailSender.SendEmail(user.Email, "Order Info", content);
                 SmsSender.SendSms($"We have received your order. Order No: {order.OrderNo}\nYour order:\n{productList}", user.PhoneNumber);
 
+                // Remove cart session once the purchase is complete
                 Session.Remove("cart");
 
+                //Get the order to display it in Order Complete view
                 orderDetailList = orderDetailService.GetDefault(x => x.OrderId == result.ID);
 
             }
-
-            return View(orderDetailList);
         }
 
 
