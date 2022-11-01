@@ -87,11 +87,5 @@ namespace Service.Concrete
                 return ex.Message;
             }
         }
-
-        //public string SearchOrder()
-        //{
-        //    var query = from order in db.Orders select order;
-        //    return query.ToString();
-        //}
     }
 }
