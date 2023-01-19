@@ -101,7 +101,6 @@
     <Compile Include="Concrete\SupplierOrderDetailService.cs" />
     <Compile Include="Concrete\SupplierOrderService.cs" />
     <Compile Include="Concrete\SupplierService.cs" />
-    <Compile Include="Concrete\UserCommentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

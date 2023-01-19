@@ -24,27 +24,6 @@
                     @Html.ActionLink("Add to Cart", "AddToCart", "Home", new { id = Model.ID }, new { @class = "btn btn-dark" })
                 </div>
             </div>
-            <div class="comment-section">
-                <div class="col-sm-12 col-md-12 col-lg-12 mx-auto mt-5">
-                    @Html.ActionLink("Add Comment", "AddComment", "Home", null, new { @class = "btn btn-primary mt-5 mb-4" })
-                        @foreach (UserComment userComment in ViewBag.UserComments)
-                        {
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <p style="margin:auto;">Posted by: @userComment.Author</p>
-                            <div style="float:right;">
-                                @Html.ActionLink("Delete", "DeleteComment", new { id = userComment.ID }, new { @class = "btn btn-sm btn-danger" })
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p>@userComment.Comment</p>
-                            <p class="text-muted">Posted: @userComment.CreatedDate</p>
-                        </div>
-                    </div>
-                        }
-                </div>
-
-            </div>
         </div>
     </div>
 </section>

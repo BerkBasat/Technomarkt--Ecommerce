@@ -19,7 +19,6 @@ namespace UI.Controllers
         SubCategoryService subCategoryService = new SubCategoryService();
         BrandService brandService = new BrandService();
         AppUserService appUserService = new AppUserService();
-        UserCommentService userCommentService = new UserCommentService();
 
 
         public ActionResult Index(Guid? id)
@@ -112,7 +111,6 @@ namespace UI.Controllers
             var product = productService.GetById(id);
             if(product != null)
             {
-                ViewBag.UserComments = userCommentService.GetList();
                 return View(product);
             }
             else
@@ -121,49 +119,6 @@ namespace UI.Controllers
             }
         }
 
-        //Add Comments to Product!
-        [AuthFilter]
-        public ActionResult AddComment()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [AuthFilter]
-        public ActionResult AddComment(UserComment userComment)
-        {
-            try
-            {
-                userComment.Author = System.Web.HttpContext.Current.User.Identity.Name;
-                string result = userCommentService.Add(userComment);
-                TempData["info"] = result;
-                return RedirectToAction("Index");
-
-            }
-            catch (Exception ex)
-            {
-                TempData["error"] = ex.Message;
-            }
-
-            return View();
-        }
-
-        [AuthFilter]
-        public ActionResult DeleteComment(Guid id)
-        {
-            var deleted = userCommentService.GetById(id);
-
-            try
-            {
-                TempData["info"] = userCommentService.Delete(deleted);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                TempData["error"] = ex.Message;
-                return RedirectToAction("Index");
-            }
-        }
 
         //Shopping Cart
 

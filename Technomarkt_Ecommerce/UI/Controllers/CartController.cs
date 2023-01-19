@@ -178,13 +178,13 @@ namespace UI.Controllers
                     Product product = productService.GetById(item.Id);
                     product.UnitsInStock -= Convert.ToInt16(item.Quantity);
 
-                    productList = $"{item.ProductName} - Total: {item.SubTotal}";
+                    productList = $"- {item.ProductName}";
                 }
 
                 // Sending email and sms to user with order details
-                string content = $"We have received your order. Order No: {order.OrderNo}\nYour order:\n{productList}";
-                MailSender.SendEmail(user.Email, "Order Info", content);
-                SmsSender.SendSms($"We have received your order. Order No: {order.OrderNo}\nYour order:\n{productList}", user.PhoneNumber);
+                //string content = $"We have received your order. Order No: {order.OrderNo}\nYour order:\n{productList}";
+                //MailSender.SendEmail(user.Email, "Order Info", content);
+                //SmsSender.SendSms($"We have received your order. Order No: {order.OrderNo}\nYour order:\n{productList}", user.PhoneNumber);
 
                 // Remove cart session once the purchase is complete
                 Session.Remove("cart");

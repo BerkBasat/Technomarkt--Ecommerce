@@ -315,7 +315,6 @@
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\BillingDetails.cshtml" />
     <Content Include="Views\Order\OrderDetails.cshtml" />
-    <Content Include="Views\Home\AddComment.cshtml" />
     <Content Include="Views\Cart\SaveCard.cshtml" />
     <Content Include="Views\Cart\UpdateCard.cshtml" />
     <None Include="Web.Debug.config">

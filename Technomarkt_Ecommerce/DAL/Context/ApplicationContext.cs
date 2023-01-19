@@ -27,8 +27,6 @@ namespace DAL.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<AppUserAndRole> AppUserAndRoles { get; set; }
         public DbSet<AppUserRole> AppUserRoles { get; set; }
-        public DbSet<UserComment> UserComments { get; set; }
-        public DbSet<UserAndComment> UserAndComments { get; set; }
         public DbSet<SupplierOrder> SupplierOrders { get; set; }
         public DbSet<SupplierOrderDetail> SupplierOrderDetails { get; set; }
         public DbSet<AppUserCard> AppUserCards { get; set; }
@@ -49,19 +47,11 @@ namespace DAL.Context
             modelBuilder.Configurations.Add(new OrderDetailMap());
             modelBuilder.Configurations.Add(new SupplierOrderMap());
             modelBuilder.Configurations.Add(new SupplierOrderDetailMap());
-            modelBuilder.Configurations.Add(new UserCommentMap());
 
             modelBuilder.Entity<AppUserAndRole>().HasKey(x => new
             {
                 x.AppUserId,
                 x.AppUserRoleId
-            });
-
-            modelBuilder.Entity<UserAndComment>().HasKey(x => new
-            {
-                x.AppUserId,
-                x.UserCommentId,
-                x.ProductId
             });
 
             base.OnModelCreating(modelBuilder);

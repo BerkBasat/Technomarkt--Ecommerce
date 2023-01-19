@@ -22,7 +22,5 @@ namespace DAL.Entity
         public virtual Brand Brand { get; set; }
         public virtual SubCategory SubCategory { get; set; }
         public virtual Supplier Supplier { get; set; }
-
-        public virtual List<UserComment> UserComments { get; set; }
     }
 }

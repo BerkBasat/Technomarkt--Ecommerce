@@ -37,7 +37,7 @@
                                     </td>
                                     <td>@item.ProductName</td>
                                     <td>@item.SubCategory</td>
-                                    <td>@Html.ActionLink("Remove", "DeleteWishlistItem", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })</td>
+                                    <td><a href="/Home/DeleteWishlistItem/@item.Id"><i class="fas fa-trash" style="color: red; font-size:20px;"></i></a></td>
                                 </tr>
                             }
                         </tbody>
